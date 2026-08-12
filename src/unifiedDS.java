@@ -10,6 +10,7 @@ public class unifiedDS {
 
     unifiedDS(){
         LinearHash=new Hash[catagories.length];
+        catIDcnt=new int[catagories.length];
         bst=new BST<>();
         for(int i=0;i<LinearHash.length;i++){
             LinearHash[i]=new Hash<>(10);
@@ -25,6 +26,7 @@ public class unifiedDS {
         //insert into bst
         bst.insert(bst.getRoot(),bst.createNode(rq, rq.urgency, rq.createdDate, rq.getRequestIDasInteger()));
         //insert into hash
+        System.out.println(rq.hashCode());
         LinearHash[cat].insert(rq.hashCode(), rq);
     }
 

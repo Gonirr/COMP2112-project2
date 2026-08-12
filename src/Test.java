@@ -1,9 +1,9 @@
 public class Test {
     public static void main(String[] args) throws Exception {
-        String ID=""+0;
-        while(ID.length()!=4){
-            ID=0+ID;
-        }
-        System.out.println(ID);
+        unifiedDS ds=new unifiedDS();
+        ds.insertRequest(0, 0, 0, "6767", "09", "17", 5);
+        ds.insertRequest(0, 0, 0, "6767", "09", "17", 4);
+        ds.insertRequest(2, 0, 0, "6767", "09", "17", 5);
+        ds.insertRequest(3, 0, 0, "6767", "09", "17", 5);
     }
 }

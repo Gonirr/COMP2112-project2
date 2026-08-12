@@ -11,9 +11,9 @@ public class BSTNode <T> {
         right=null;
         this.data=data;
         compositeKey=new int[3];
-        compositeKey[1]=urgency;
-        compositeKey[2]=date;
-        compositeKey[3]=id;
+        compositeKey[0]=urgency;
+        compositeKey[1]=date;
+        compositeKey[2]=id;
     }
 
     

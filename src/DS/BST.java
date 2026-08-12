@@ -8,7 +8,7 @@ public class BST <T>{
     }
     public boolean insert(BSTNode focus,BSTNode node){
         if(root==null) {root=node; return true;}
-        for(int i=0;i<node.compositeKey.length;i++){
+        for(int i=0;i<3;i++){
             if(focus.compositeKey[i]>node.compositeKey[i]){
                 if(focus.left==null) {focus.left=node; return true;} 
                 else insert(focus.left,node);
@@ -25,12 +25,15 @@ public class BST <T>{
     }
 
     public void printTree(BSTNode <T> focus){
-        Queue q=new Queue<>();
-        if(focus!=null){
-            q.enqueue(focus.data);
-            printTree(focus.left);
-            printTree(focus.right);
-            System.out.print(q.dequeue());
+        //level order traversal
+        Queue<BSTNode> q=new Queue<>();
+        q.enqueue(focus);
+        while(!q.isEmpty()){
+            BSTNode<T> d=(BSTNode)q.dequeue();
+            //System.out.print(d.data+",");
+            if(d.left!=null) q.enqueue(d.left);
+            if(d.right!=null) q.enqueue(d.right);
+            System.out.println(q.list);
         }
     }
 }

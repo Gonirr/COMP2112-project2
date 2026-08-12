@@ -26,10 +26,10 @@ public class LinkedList <T>{
         last=n;
     }
 
-    public LLNode removeFirst(){
+    public T removeFirst(){
         LLNode tmp=first;
         first=first.next;
-        return tmp;
+        return (T)tmp.data;
     }
     @Override
     public String toString(){

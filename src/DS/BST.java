@@ -23,4 +23,14 @@ public class BST <T>{
     public BSTNode getRoot(){
         return root;
     }
+
+    public void printTree(BSTNode <T> focus){
+        Queue q=new Queue<>();
+        if(focus!=null){
+            q.enqueue(focus.data);
+            printTree(focus.left);
+            printTree(focus.right);
+            System.out.print(q.dequeue());
+        }
+    }
 }

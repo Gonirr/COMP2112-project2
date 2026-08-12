@@ -10,4 +10,8 @@ public class LLNode <T>{
         next=null;
         prev=null;
     }
+    @Override
+    public String toString(){
+        return data.toString();
+    }
 }

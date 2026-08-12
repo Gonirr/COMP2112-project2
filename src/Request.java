@@ -35,13 +35,13 @@ public class Request {
         /*
         for example assume cnt=1
         if the request is IT then catID=0
-        then method returns 00001
+        then method returns 00001=1
         if the request is FAC then catID=1
         then method returns 10001
         */
         return Integer.parseInt(s);
     }
-    public void print(){
-        System.out.println(this.requestID+" "+this.getRequestIDasInteger());
+    public String toString(){
+        return requestID;
     }
 }

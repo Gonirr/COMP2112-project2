@@ -10,9 +10,9 @@ public class Test {
 
         BST <String> bst=new BST<>();
         bst.insert(bst.getRoot(), bst.createNode("a", 3, 2, 3));
-        bst.insert(bst.getRoot(), bst.createNode("b", 4, 2, 4));
+        bst.insert(bst.getRoot(), bst.createNode("b", 3, 2, 4));
         bst.insert(bst.getRoot(), bst.createNode("c", 4, 2, 3));
-        bst.insert(bst.getRoot(), bst.createNode("d", 3, 3, 4));
+        bst.insert(bst.getRoot(), bst.createNode("d", 2, 3, 4));
         bst.printTree(bst.getRoot());
 
         /* LinkedList <Integer> ll=new LinkedList<>();

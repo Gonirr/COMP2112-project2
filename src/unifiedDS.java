@@ -1,15 +1,18 @@
-import DS.Hash;
+import DS.*;
 
 public class unifiedDS {
     String[] catagories={"IT","FAC","LIB","LAB","CLA","NET"};
+    private static int[] catIDcnt;//used to generate unıque ıd for every catagory;
     String[] locations={"Building","Room","Lab","Office"};
     String[] stats={"OPEN","IN_PROGRESS","RESOLVED","CANCELLED"};
     Hash[] LinearHash;
+    BST bst;
 
     unifiedDS(){
         LinearHash=new Hash[catagories.length];
+        bst=new BST<>();
         for(int i=0;i<LinearHash.length;i++){
-            LinearHash[i]=new Hash(10);
+            LinearHash[i]=new Hash<>(10);
         }
     }
 
@@ -18,8 +21,9 @@ public class unifiedDS {
         //combine date
         String date=year+month+day;
         //create request
-        Request rq =new Request(catagories[cat], locations[loc], stats[stat], Integer.parseInt(date), urgency,cat);
+        Request rq =new Request(catagories[cat], locations[loc], stats[stat], Integer.parseInt(date), urgency,cat,catIDcnt[cat]++);
         //insert into bst
+        bst.insert(bst.getRoot(),bst.createNode(rq, rq.urgency, rq.createdDate, rq.getRequestIDasInteger()));
         //insert into hash
         LinearHash[cat].insert(rq.hashCode(), rq);
     }

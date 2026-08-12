@@ -1,6 +1,9 @@
 public class Test {
     public static void main(String[] args) throws Exception {
-        String s = "2006"+"01"+"17";
-        System.out.println(Integer.parseInt(s));
+        String ID=""+0;
+        while(ID.length()!=4){
+            ID=0+ID;
+        }
+        System.out.println(ID);
     }
 }

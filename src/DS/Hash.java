@@ -10,4 +10,6 @@ public class Hash <T>{
     public void insert(int i,T data){
         array[i].insertFirst(data);
     }
+
+    
 }

@@ -23,4 +23,8 @@ public class unifiedDS {
         //insert into hash
         LinearHash[cat].insert(rq.hashCode(), rq);
     }
+
+    public void delete(){}
+
+    
 }

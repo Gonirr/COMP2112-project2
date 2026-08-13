@@ -1,4 +1,5 @@
 import DS.*;
+
 public class Test {
     public static void main(String[] args) throws Exception {
         /* unifiedDS ds=new unifiedDS();
@@ -6,15 +7,22 @@ public class Test {
         ds.insertRequest(0, 0, 0, "6767", "09", "17", 4);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         ds.insertRequest(3, 0, 0, "6767", "09", "17", 2);
+        ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         ds.bst.printTree(ds.bst.getRoot()); */
 
         BST <String> bst=new BST<>();
-        bst.insert(bst.getRoot(), bst.createNode("a", 3, 2, 3));
-        bst.insert(bst.getRoot(), bst.createNode("b", 3, 2, 4));
-        bst.insert(bst.getRoot(), bst.createNode("c", 4, 2, 3));
-        bst.insert(bst.getRoot(), bst.createNode("d", 2, 3, 4));
+        int[] keys=new int[3];
+        keys[0]=4;
+        keys[1]=0;
+        keys[2]=0;
+        BSTNode tmp=bst.createNode("d", keys);
+        bst.insert(bst.getRoot(), bst.createNode("a", 3, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("b", 5, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("c", 2, 0, 0));
+        bst.insert(bst.getRoot(), tmp);
         bst.printTree(bst.getRoot());
-
+        
+        System.out.println(bst.search(bst.getRoot(),"d", keys));
         /* LinkedList <Integer> ll=new LinkedList<>();
         ll.insertFirst(1);
         ll.insertFirst(2);

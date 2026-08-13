@@ -17,5 +17,8 @@ public class BSTNode <T> {
         compositeKey[2]=id;
     }
 
+    public T getData(){
+        return data;
+    }
     
 }

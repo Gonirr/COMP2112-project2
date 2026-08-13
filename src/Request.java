@@ -7,6 +7,7 @@ public class Request {
     String status;
     private String requestID;
     private String ID;
+    int[] keys;
 
     Request(String catagory,String location,String status,int createdDate,int urgency,int catID,int cnt){
         this.catagory=catagory;
@@ -16,6 +17,10 @@ public class Request {
         this.location=location;
         this.createdDate=createdDate;
         this.catId=catID;
+        keys=new int[3];
+        keys[0]=urgency;
+        keys[1]=createdDate;
+        keys[2]=getRequestIDasInteger();
     }
 
     private void generateID(int cnt){
@@ -44,4 +49,10 @@ public class Request {
     public String toString(){
         return requestID;
     }
+
+    public int[] getKeys(){
+        return keys;
+    }
+
+    
 }

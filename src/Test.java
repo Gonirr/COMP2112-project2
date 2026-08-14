@@ -12,22 +12,23 @@ public class Test {
 
         BST <String> bst=new BST<>();
         int[] keys=new int[3];
-        keys[0]=4;
+        keys[0]=8;
         keys[1]=0;
         keys[2]=0;
         BSTNode tmp=bst.createNode("d", keys);
-        bst.insert(bst.getRoot(), bst.createNode("a", 3, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("a", 2, 0, 0));
         bst.insert(bst.getRoot(), bst.createNode("b", 5, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("c", 2, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("r", 6, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("f", 11, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("g", 10, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("t", 4, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("y", 12, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("h", -2, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("c", 3, 0, 0));
+        bst.insert(bst.getRoot(), bst.createNode("e", -1, 0, 0));
         bst.insert(bst.getRoot(), tmp);
-        bst.printTree(bst.getRoot());
-        
-        System.out.println(bst.search(bst.getRoot(),"d", keys));
-        /* LinkedList <Integer> ll=new LinkedList<>();
-        ll.insertFirst(1);
-        ll.insertFirst(2);
-        ll.insertLast(3);
-        ll.insertLast(4);
-        System.out.println(ll); */
+        //bst.delete(tmp);
+        //System.out.println(bst.search(bst.getRoot(), "d", keys));
+        System.out.println(bst);
     }
 }

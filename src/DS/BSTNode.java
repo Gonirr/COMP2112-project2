@@ -20,5 +20,19 @@ public class BSTNode <T> {
     public T getData(){
         return data;
     }
-    
+
+    public String toString(){
+        String s=data+": [";
+        for(int i=0;i<this.compositeKey.length;i++){
+            if(i<this.compositeKey.length-1){
+                s=s+this.compositeKey[i]+",";
+            }
+            else{
+                s=s+this.compositeKey[i];
+            }
+            
+        }
+        s=s+"]";
+        return s;
+    }
 }

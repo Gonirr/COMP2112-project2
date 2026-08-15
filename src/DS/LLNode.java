@@ -5,10 +5,9 @@ public class LLNode <T>{
     LLNode <T> next;
     LLNode <T> prev;
 
-    LLNode(T data){
+    public LLNode(T data){
         this.data=data;
         next=null;
-        prev=null;
     }
     @Override
     public String toString(){

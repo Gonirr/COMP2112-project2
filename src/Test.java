@@ -32,10 +32,8 @@ public class Test {
         Hash <String> h=new Hash<>(3);
         h.insert(0, "a");
         h.insert(0, "b");
-        h.insert(0, null);
+        h.insert(0, "d");
         h.insert(0, "c");
-        System.out.println(h);
-        
-
+        System.out.println(h.delete(0, "d"));
     }
 }

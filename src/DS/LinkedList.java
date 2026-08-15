@@ -43,4 +43,32 @@ public class LinkedList <T>{
         }
         return s;
     }
+
+    public LLNode <T> search(T data){
+        LLNode <T> found=null;
+        LLNode <T> tmp=first;
+        while(tmp!=null){
+            if(tmp.data==data){
+                found=tmp;
+                return found;
+            }
+            tmp=tmp.next;
+        }
+        return found;
+    }
+
+    public boolean removeNode(T data){
+        LLNode <T> prev=null;
+        LLNode <T> tmp=first;
+        while(tmp!=null){
+            prev=tmp;
+            tmp=tmp.next;
+            if(tmp.data==data){
+                prev.next=null;
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

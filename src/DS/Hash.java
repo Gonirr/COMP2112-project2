@@ -29,16 +29,11 @@ public class Hash <T>{
     }
 
     public LLNode <T> search(int i,T data){
-        LLNode <T> found=null;
-        LLNode <T> tmp=array[i].first;
-        while(tmp!=null){
-            if(tmp.data==data){
-                found=tmp;
-                return found;
-            }
-            tmp=tmp.next;
-        }
-        return found;
+        return array[i].search(data);
+    }
+
+    public boolean remove(int i,T data){
+        return array[i].removeNode(data);
     }
     
 }

@@ -7,7 +7,7 @@ public class BSTNode <T> {
     T data;
     int height;
     
-    BSTNode(T data,int urgency,int date,int id){
+    public BSTNode(T data,int urgency,int date,int id){
         left=null;
         right=null;
         this.data=data;
@@ -15,6 +15,14 @@ public class BSTNode <T> {
         compositeKey[0]=urgency;
         compositeKey[1]=date;
         compositeKey[2]=id;
+    }
+
+    public BSTNode(T data,int[] compositeKey){
+        //assuming the given compositeKeys length is 3
+        left=null;
+        right=null;
+        this.data=data;
+        this.compositeKey=compositeKey;
     }
 
     public T getData(){

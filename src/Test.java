@@ -12,23 +12,24 @@ public class Test {
 
         BST <String> bst=new BST<>();
         int[] keys=new int[3];
-        keys[0]=8;
+        keys[0]=4;
         keys[1]=0;
         keys[2]=0;
-        BSTNode tmp=bst.createNode("d", keys);
-        bst.insert(bst.getRoot(), bst.createNode("a", 2, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("b", 5, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("r", 6, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("f", 11, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("g", 10, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("t", 4, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("y", 12, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("h", -2, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("c", 3, 0, 0));
-        bst.insert(bst.getRoot(), bst.createNode("e", -1, 0, 0));
-        bst.insert(bst.getRoot(), tmp);
-        //bst.delete(tmp);
-        //System.out.println(bst.search(bst.getRoot(), "d", keys));
+        BSTNode <String> a =new BSTNode<>("a",1,0,0);
+        BSTNode <String> b =new BSTNode<>("b",2,0,0);
+        BSTNode <String> c =new BSTNode<>("c",3,0,0);
+        BSTNode <String> d =new BSTNode<>("d",4,0,0);
+        BSTNode <String> e =new BSTNode<>("e",5,0,0);
+        BSTNode <String> f =new BSTNode<>("f",6,0,0);
+
+        bst.insert(c);
+        bst.insert(e);
+        bst.insert(d);
+        bst.insert(f);
+
+        System.out.println(bst);
+        System.out.println();
+        bst.delete(c);
         System.out.println(bst);
     }
 }

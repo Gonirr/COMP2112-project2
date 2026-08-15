@@ -24,7 +24,7 @@ public class unifiedDS {
         //create request
         Request rq =new Request(catagories[cat], locations[loc], stats[stat], Integer.parseInt(date), urgency,cat,catIDcnt[cat]++);
         //insert into bst
-        bst.insert(bst.getRoot(),bst.createNode(rq, rq.getKeys()));
+        bst.insert(new BSTNode(rq, rq.getKeys()));
         //insert into hash
         LinearHash[cat].insert(rq.hashCode(), rq);
     }

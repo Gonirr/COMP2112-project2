@@ -3,15 +3,7 @@ package DS;
 public class BST <T>{
     private BSTNode <T> root;
 
-    public BSTNode createNode(T data,int[] keys){
-        return new BSTNode<T>(data, keys[0], keys[1], keys[2]);
-    }
-
-    public BSTNode createNode(T data,int key1,int key2,int key3){
-        return new BSTNode<T>(data, key1, key2, key3);
-    }
-
-    public boolean insert(BSTNode focus,BSTNode node){
+    public boolean insertFromFocus(BSTNode focus,BSTNode node){
         if(root==null) {
             node.height=0;
             root=node; return true;
@@ -24,7 +16,7 @@ public class BST <T>{
                     return true;
                 } 
                 else {
-                    return insert(focus.left,node);
+                    return insertFromFocus(focus.left,node);
                 }
             }
             else if(focus.compositeKey[i]<node.compositeKey[i]){
@@ -33,11 +25,16 @@ public class BST <T>{
                     focus.right=node;
                     return true;
                 }
-                return insert(focus.right,node);
+                return insertFromFocus(focus.right,node);
             }
         }
         //the code wont get here since the getRequestIDasInteger() always returns a value unıque to the request
         return false;
+    }
+
+
+    public boolean insert(BSTNode node){
+        return insertFromFocus(root,node);
     }
 
     public BSTNode getRoot(){
@@ -52,13 +49,23 @@ public class BST <T>{
         while(!q.isEmpty()){
             BSTNode d=(BSTNode)q.dequeue();
             BSTNode t=(BSTNode)q.peek();
-            if(d.height==0) s=s+d+"\n";
-            else if(d.height==t.height) s=s+d+" , ";
-            else s=s+d+"\n";
+            s=s+" "+d.height+"="+d+" , ";
             if(d.left!=null) q.enqueue(d.left);
             if(d.right!=null) q.enqueue(d.right);
         }
         return s;
+    }
+
+    public void increaseHeight(BSTNode <T> focus){
+        if(focus==null) return;
+        Queue<BSTNode> q=new Queue<>();
+        q.enqueue(focus);
+        while(!q.isEmpty()){
+            BSTNode <T> d=(BSTNode)q.dequeue();
+            d.height--;
+            if(d.left!=null) q.enqueue(d.left);
+            if(d.right!=null) q.enqueue(d.right);
+        }
     }
 
     public BSTNode search(BSTNode focus, T data,int[] compositeKey){
@@ -89,17 +96,56 @@ public class BST <T>{
     }
 
     public void delete(BSTNode child){
+        boolean isLeft=true;
         BSTNode parent=searchParent(root, child, null);
-        BSTNode rightSub=child.right;
-        BSTNode leftSub=child.left;
-        if(parent.left==child) parent.left=null;
-        else if(parent.right==child) parent.right=null;
-        parent.left=leftSub;
-        BSTNode focus=leftSub;
-        while(focus.right!=null){
-            focus=focus.right;
+        BSTNode rightSub=null;
+        BSTNode leftSub=null;
+
+        if(parent==null){//deleting root
+            if(child.right!=null){
+                parent=child.right;
+                leftSub=child.left;
+            }
+            else if(child.left!=null){
+                parent=child.left;
+            }
+            else{//there is only root
+                root=null;
+                return;
+            }
+            parent.height--;
+            root=parent;
         }
-        focus.right=rightSub;
+        else{
+            rightSub=child.right;
+            leftSub=child.left;
+        }
+
+        if(parent.left==child){
+            parent.left=null;
+        } 
+        else if(parent.right==child){
+            parent.right=null;
+            isLeft=false;
+        }
+
+        if(leftSub!=null){
+            BSTNode nextRight=null;//next available right place of the left subtree
+            BSTNode tmp=leftSub;
+            while(tmp!=null){
+                nextRight=tmp;
+                tmp=tmp.right;
+            }
+            nextRight.right=rightSub;
+        }
+
+        if(isLeft) {
+            parent.left=leftSub;
+        }
+        else{
+            parent.right=leftSub;
+        }
+
     }
     
 }

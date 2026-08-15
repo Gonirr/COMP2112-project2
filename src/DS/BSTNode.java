@@ -5,7 +5,6 @@ public class BSTNode <T> {
     BSTNode <T> right;
     int[] compositeKey;
     T data;
-    int height;
     
     public BSTNode(T data,int urgency,int date,int id){
         left=null;

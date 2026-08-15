@@ -5,6 +5,7 @@ public class LinkedList <T>{
     LLNode <T> last;
 
     public void insertFirst(T data){
+        if(data==null) return;
         LLNode n=new LLNode(data);
         if(first==null){
             first=n;
@@ -16,6 +17,7 @@ public class LinkedList <T>{
     }
 
     public void insertLast(T data){
+        if(data==null) return;
         LLNode n=new LLNode(data);
         if(first==null){
             first=n;

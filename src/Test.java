@@ -10,11 +10,7 @@ public class Test {
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         ds.bst.printTree(ds.bst.getRoot()); */
 
-        BST <String> bst=new BST<>();
-        int[] keys=new int[3];
-        keys[0]=4;
-        keys[1]=0;
-        keys[2]=0;
+        /* BST <String> bst=new BST<>();
         BSTNode <String> a =new BSTNode<>("a",1,0,0);
         BSTNode <String> b =new BSTNode<>("b",2,0,0);
         BSTNode <String> c =new BSTNode<>("c",3,0,0);
@@ -22,7 +18,6 @@ public class Test {
         BSTNode <String> e =new BSTNode<>("e",5,0,0);
         BSTNode <String> f =new BSTNode<>("f",6,0,0);
         BSTNode <String> k =new BSTNode<>("k",7,0,0);
-
         bst.insert(d);
         bst.insert(b);
         bst.insert(c);
@@ -30,9 +25,17 @@ public class Test {
         bst.insert(f);
         bst.insert(e);
         bst.insert(k);
-        
         System.out.println(bst);
         bst.delete(d);
-        System.out.println(bst);
+        System.out.println(bst); */
+
+        Hash <String> h=new Hash<>(3);
+        h.insert(0, "a");
+        h.insert(0, "b");
+        h.insert(0, null);
+        h.insert(0, "c");
+        System.out.println(h);
+        
+
     }
 }

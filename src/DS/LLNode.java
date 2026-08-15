@@ -12,6 +12,7 @@ public class LLNode <T>{
     }
     @Override
     public String toString(){
+        if(data==null) return "null";
         return data.toString();
     }
 }

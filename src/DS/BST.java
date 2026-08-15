@@ -5,13 +5,11 @@ public class BST <T>{
 
     public boolean insertFromFocus(BSTNode focus,BSTNode node){
         if(root==null) {
-            node.height=0;
             root=node; return true;
         }
         for(int i=0;focus!=null&&i<node.compositeKey.length;i++){
             if(focus.compositeKey[i]>node.compositeKey[i]){
                 if(focus.left==null) {
-                    node.height=focus.height+1;
                     focus.left=node;
                     return true;
                 } 
@@ -21,7 +19,6 @@ public class BST <T>{
             }
             else if(focus.compositeKey[i]<node.compositeKey[i]){
                 if(focus.right==null) {
-                    node.height=focus.height+1;
                     focus.right=node;
                     return true;
                 }
@@ -49,23 +46,11 @@ public class BST <T>{
         while(!q.isEmpty()){
             BSTNode d=(BSTNode)q.dequeue();
             BSTNode t=(BSTNode)q.peek();
-            s=s+" "+d.height+"="+d+" , ";
+            s=s+d+" , ";
             if(d.left!=null) q.enqueue(d.left);
             if(d.right!=null) q.enqueue(d.right);
         }
         return s;
-    }
-
-    public void increaseHeight(BSTNode <T> focus){
-        if(focus==null) return;
-        Queue<BSTNode> q=new Queue<>();
-        q.enqueue(focus);
-        while(!q.isEmpty()){
-            BSTNode <T> d=(BSTNode)q.dequeue();
-            d.height--;
-            if(d.left!=null) q.enqueue(d.left);
-            if(d.right!=null) q.enqueue(d.right);
-        }
     }
 
     public BSTNode search(BSTNode focus, T data,int[] compositeKey){

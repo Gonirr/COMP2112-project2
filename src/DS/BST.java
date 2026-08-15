@@ -98,27 +98,23 @@ public class BST <T>{
     public void delete(BSTNode child){
         boolean isLeft=true;
         BSTNode parent=searchParent(root, child, null);
-        BSTNode rightSub=null;
-        BSTNode leftSub=null;
+        BSTNode rightSub=child.right;
+        BSTNode leftSub=child.left;
 
         if(parent==null){//deleting root
-            if(child.right!=null){
-                parent=child.right;
-                leftSub=child.left;
-            }
-            else if(child.left!=null){
+            if(child.left!=null){
                 parent=child.left;
+                leftSub=parent.right;
             }
-            else{//there is only root
+            else if(child.right!=null){// left=null but right!=null, there is only right subtree
+                root=child.right;
+                child.right=null;
+                return;
+            }
+            else{//both left and right are null there is only the root node int he tree
                 root=null;
                 return;
             }
-            parent.height--;
-            root=parent;
-        }
-        else{
-            rightSub=child.right;
-            leftSub=child.left;
         }
 
         if(parent.left==child){
@@ -128,6 +124,8 @@ public class BST <T>{
             parent.right=null;
             isLeft=false;
         }
+        //child==parent
+        //stays isLeft=true
 
         if(leftSub!=null){
             BSTNode nextRight=null;//next available right place of the left subtree
@@ -137,6 +135,12 @@ public class BST <T>{
                 tmp=tmp.right;
             }
             nextRight.right=rightSub;
+            if(child==root){
+                child.left=null;
+                child.right=null;
+                root=parent;
+                return;
+            }
         }
 
         if(isLeft) {

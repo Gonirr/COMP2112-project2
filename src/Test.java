@@ -21,15 +21,18 @@ public class Test {
         BSTNode <String> d =new BSTNode<>("d",4,0,0);
         BSTNode <String> e =new BSTNode<>("e",5,0,0);
         BSTNode <String> f =new BSTNode<>("f",6,0,0);
+        BSTNode <String> k =new BSTNode<>("k",7,0,0);
 
-        bst.insert(c);
-        bst.insert(e);
         bst.insert(d);
+        bst.insert(b);
+        bst.insert(c);
+        bst.insert(a);
         bst.insert(f);
-
+        bst.insert(e);
+        bst.insert(k);
+        
         System.out.println(bst);
-        System.out.println();
-        bst.delete(c);
+        bst.delete(d);
         System.out.println(bst);
     }
 }

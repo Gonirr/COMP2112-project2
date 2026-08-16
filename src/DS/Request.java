@@ -59,5 +59,9 @@ public class Request {
     public int getIDasInt(){
         return Integer.parseInt(ID);
     }
+
+    public int getCatID(){
+        return catId;
+    }
     
 }

@@ -1,18 +1,18 @@
 package DS;
 
 public class Queue <T>{
-    LinkedList <T>list;
+    GenericLinkedList <T> list;
     int size;
     T top;
 
     Queue(){
-        list=new LinkedList();
+        list=new GenericLinkedList();
         size=0;
         top=null;
     }
 
     public void enqueue(T data){
-        LLNode node=new LLNode<T>(data);
+        GenericLLNode <T> node=new GenericLLNode<T>(data);
         list.insertLast(data);
         size++;
         top=data;

@@ -44,7 +44,7 @@ public class unifiedDS {
         int catID=0;
         String ID="";
         String cat="";
-        for(int i=0;'-'!=requestID.charAt(i);i++){
+        for(int i=0;'-'!=requestID.charAt(i)||i<requestID.length();i++){
             cat=cat+requestID.charAt(i);
             place=i;
         }
@@ -65,5 +65,7 @@ public class unifiedDS {
         return LinearHash[catID].search(x);
     }
 
+
+    
 
 }

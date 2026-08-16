@@ -3,11 +3,13 @@ public class Test {
     public static void main(String[] args) throws Exception {
         unifiedDS ds=new unifiedDS();
         ds.insertRequest(0, 0, 0, "6767", "09", "17", 5);
-        ds.insertRequest(0, 0, 0, "6767", "09", "17", 4);
+        ds.insertRequest(1, 0, 0, "6767", "09", "17", 4);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         ds.insertRequest(3, 0, 0, "6767", "09", "17", 2);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
-        ds.searchByRequestID("FAC-1000");
+        System.out.println(ds.bst);
+        ds.searchByRequestID("FAC-0000");
+        
 
         /* BST <String> bst=new BST<>();
         BSTNode <String> a =new BSTNode<>("a",1,0,0);

@@ -1,12 +1,12 @@
 package DS;
 
-public class LinkedList {
-    LLNode first;
-    LLNode last;
+public class GenericLinkedList <T> {
+    GenericLLNode <T> first;
+    GenericLLNode <T> last;
 
-    public void insertFirst(Request data){
+    public void insertFirst(T data){
         if(data==null) return;
-        LLNode n=new LLNode(data);
+        GenericLLNode <T> n=new GenericLLNode(data);
         if(first==null){
             first=n;
             last=n;
@@ -16,9 +16,9 @@ public class LinkedList {
         first=n;
     }
 
-    public void insertLast(Request data){
+    public void insertLast(T data){
         if(data==null) return;
-        LLNode n=new LLNode(data);
+        GenericLLNode <T> n=new GenericLLNode(data);
         if(first==null){
             first=n;
             last=n;
@@ -28,14 +28,14 @@ public class LinkedList {
         last=n;
     }
 
-    public Request removeFirst(){
-        LLNode tmp=first;
+    public T removeFirst(){
+        GenericLLNode <T> tmp=first;
         first=first.next;
         return tmp.data;
     }
     @Override
     public String toString(){
-        LLNode tmp=first;
+        GenericLLNode <T> tmp=first;
         String s="";
         while(tmp!=null){
             s=s+"->"+tmp;
@@ -44,18 +44,9 @@ public class LinkedList {
         return s;
     }
 
-    public Request search(int ID){
-        LLNode tmp=first;
-        while(tmp!=null){
-            if(ID==tmp.data.getIDasInt()) return tmp.data;
-            tmp=tmp.next;
-        }
-        return null;
-    }
-
-    public boolean removeNode(Request data){
-        LLNode prev=first;
-        LLNode tmp=first.next;
+    public boolean removeNode(T data){
+        GenericLLNode <T> prev=first;
+        GenericLLNode <T> tmp=first.next;
 
         if(first == null){
             return false;
@@ -71,5 +62,4 @@ public class LinkedList {
         }
         return false;
     }
-
 }

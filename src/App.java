@@ -22,12 +22,16 @@ public class App {
             System.out.println("9. Show data structure statistics");
             System.out.println("0. Exit\n");
 
-            switch (choice) {//these are placeholder methods so I don't forget the names I'll brb
-                case 1:
-                    //in unified ds there is a method called insertRequest(int cat,int loc,int stat,String year,String month,String day,int urgency) use that
-                    //+ you will see there are string arrays in unifiedDS ask the user to select catogory, status, loc  etc. using those
-                    //print those arrays and ask for the needed index
 
+            /*
+
+            ok currently case 3,4, 6,8,9 missing
+            i will be adding the 20 examples
+            */
+
+            switch (choice) {
+                case 1:
+                    
                     System.out.println("Enter the category index from the provided list: ");
                     
                     for(int i = 0; i < ds.catagories.length; i++){
@@ -47,11 +51,11 @@ public class App {
                     }
                     int statIndex = sc.nextInt();
 
-                    System.out.println("Enter the year: ");
+                    System.out.println("Enter the year of the request: ");
                     String year = sc.next();
-                    System.out.println("Enter the month: ");
+                    System.out.println("Enter the month of the request: ");
                     String month = sc.next();
-                    System.out.println("Enter the day: ");
+                    System.out.println("Enter the day of the request: ");
                     String day = sc.next();
 
                     System.out.println("Enter the urgency level (1-5): ");
@@ -62,7 +66,7 @@ public class App {
                 case 2:
                     System.out.println("Enter the request ID to search for: ");
                     String requestID = sc.next();
-                    ds.searchByRequestID(requestID);//this gives an error cause static
+                    ds.searchByRequestID(requestID);//this gives an error cause static - no longer
                     break;
                 case 3:
                     ds.listRequestsByPriority();
@@ -71,15 +75,23 @@ public class App {
                     ds.showMostUrgentRequest();
                     break;
                 case 5:
+                    System.out.println("Enter the request ID to update: ");
+                    String requestIDToUpdate = sc.next();
+                    System.out.println("Enter the new status index from the provided list: ");
+                    for(int i = 0; i < ds.stats.length; i++){
+                        System.out.println(i+". "+ds.stats[i]);
+                    }
+                    int newStatusIndex = sc.nextInt();
+                    ds.updateStatus(newStatusIndex, requestIDToUpdate);
                     //updateStatus(int ix,String requestID) + using stats array
-                    ds.updateRequestStatus();
                     break;
                 case 6:
                     ds.updateRequestUrgency();
                     break;
                 case 7:
-                    //deleteRequest(String requestID)
-                    ds.deleteRequest();
+                    System.out.println("Enter the request ID to delete: ");
+                    String requestIDtoDelete = sc.next();
+                    ds.deleteRequest(requestIDtoDelete);
                     break;
                 case 8:
                     ds.showRequestsByLocation();

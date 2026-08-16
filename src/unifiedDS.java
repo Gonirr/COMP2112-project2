@@ -17,26 +17,50 @@ public class unifiedDS {
         }
     }
 
-    public void insertRequest(int cat,int loc,int stat,String year,String month,String day,int urgency){
-        //checks if the given data are valid if not abort insert
+    public Request userCreatesRequest(int cat,int loc,int stat,String year,String month,String day,int urgency){
+        if(!this.dateCheck(year, month, day)||!this.checkUrgency(urgency)) return null;
         //combine date
         String date=year+month+day;
         //create request
         Request rq =new Request(catagories[cat], locations[loc], stats[stat], Integer.parseInt(date), urgency,cat,catIDcnt[cat]++);
+        return rq;
+    }
+
+    public void insertRequest(int cat,int loc,int stat,String year,String month,String day,int urgency){
+        Request rq=this.userCreatesRequest(cat, loc, stat, year, month, day, urgency);
+        insert(rq);
+    }
+
+    public void insert(Request rq){
         //insert into bst
         bst.insert(new BSTNode(rq, rq.getKeys()));
         //insert into hash
-        LinearHash[cat].insert(rq.hashCode(), rq);
+        LinearHash[rq.getCatID()].insert(rq.hashCode(), rq);
     }
 
-    public void delete(Request rq) throws Exception{
+    public boolean delete(Request rq){
+        boolean hashDel=false;
+        boolean treeDel=false;
         BSTNode del=bst.search(bst.getRoot(), rq, rq.getKeys());
-        if(bst.delete(del)){
-            throw new Exception("Unable to delete data.");
+        if(bst.delete(del)){//delete operation
+            treeDel=true;
         }
-        if(LinearHash[rq.getCatID()].delete(rq.hashCode(), rq)){
-            throw new Exception("Unable to delete data.");
+        if(LinearHash[rq.getCatID()].delete(rq.hashCode(), rq)){//delete operation
+            hashDel=true;
         }
+
+        if(treeDel&&hashDel){
+            return true;//delete succesfull
+        }
+        if(treeDel){
+           //add back deleted rq bcuz it was deleted from hash
+           bst.insert(del); 
+        }
+        else if(hashDel){
+            //same as above but for hash
+            LinearHash[rq.getCatID()].insert(rq.hashCode(), rq);
+        }
+        return false;
     }
 
     public Request searchByRequestID(String requestID){
@@ -44,12 +68,13 @@ public class unifiedDS {
         int catID=0;
         String ID="";
         String cat="";
-        for(int i=0;'-'!=requestID.charAt(i)||i<requestID.length();i++){
+        for(int i=0;'-'!=requestID.charAt(i);i++){
+            if(i==requestID.length()) break;
             cat=cat+requestID.charAt(i);
             place=i;
         }
         place++;
-        for(int i=place;i<requestID.length();i++){
+        for(int i=0;i<catagories.length;i++){
             if(catagories[i].equals(cat)){
                 catID=i;
                 break;
@@ -58,14 +83,40 @@ public class unifiedDS {
         if(!catagories[catID].equals(cat)){
             return null;
         }
-        for(int i=0;i<requestID.length();i++){
+        for(int i=place+1;i<requestID.length();i++){
             ID=ID+requestID.charAt(i);
         }
         int x=Integer.parseInt(ID);
         return LinearHash[catID].search(x);
     }
 
-
+    public String LinearHashtoString(){
+        String s="";
+        for(int i=0;i<catagories.length;i++){
+            s=s+this.catagories[i]+"\n"+LinearHash[i]+"\n";
+        }
+        return s;
+    }
     
+    public void updateUrgency(String requestID,int newUrgency){
+        Request rq=this.searchByRequestID(requestID);
+        if(!this.checkUrgency(newUrgency)||rq==null||rq.urgency==newUrgency) return;
+        boolean t=this.delete(rq);
+        if(!t) return;
+        rq.urgency=newUrgency;
 
+    }
+
+    public boolean dateCheck(String year,String month,String day){
+        //implement
+        return true;
+    }
+
+    public boolean checkUrgency(int urgency){
+        if(-1<urgency&&urgency<6){
+            return true;
+        }
+        System.out.println("Invalid urgency.");
+        return false;
+    }
 }

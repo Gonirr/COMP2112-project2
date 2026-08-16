@@ -1,4 +1,4 @@
-
+import DS.*;
 public class Test {
     public static void main(String[] args) throws Exception {
         unifiedDS ds=new unifiedDS();
@@ -8,8 +8,9 @@ public class Test {
         ds.insertRequest(3, 0, 0, "6767", "09", "17", 2);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         System.out.println(ds.bst);
-        ds.searchByRequestID("FAC-0000");
-        
+        System.out.println(ds.LinearHashtoString());
+        Request rq=ds.searchByRequestID("FAC-0000");
+        System.out.println(rq);
 
         /* BST <String> bst=new BST<>();
         BSTNode <String> a =new BSTNode<>("a",1,0,0);

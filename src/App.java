@@ -28,11 +28,42 @@ public class App {
                     //in unified ds there is a method called insertRequest(int cat,int loc,int stat,String year,String month,String day,int urgency) use that
                     //+ you will see there are string arrays in unifiedDS ask the user to select catogory, status, loc  etc. using those
                     //print those arrays and ask for the needed index
-                    unifiedDS.addRequest();
+
+                    System.out.println("Enter the category index from the provided list: ");
+                    
+                    for(int i = 0; i < unifiedDS.catagories.length; i++){
+                        System.out.println(i+". "+unifiedDS.catagories[i]);
+                    }
+                    int catIndex = sc.nextInt();
+
+                    System.out.println("Enter the location index from the provided list: ");
+                    for(int i = 0; i < unifiedDS.locations.length; i++){
+                        System.out.println(i+". "+unifiedDS.locations[i]);
+                    }
+                    int locIndex = sc.nextInt();
+
+                    System.out.println("Enter the status index from the provided list: ");
+                    for(int i = 0; i < unifiedDS.statuses.length; i++){
+                        System.out.println(i+". "+unifiedDS.statuses[i]);
+                    }
+                    int statIndex = sc.nextInt();
+
+                    System.out.println("Enter the year: ");
+                    String year = sc.next();
+                    System.out.println("Enter the month: ");
+                    String month = sc.next();
+                    System.out.println("Enter the day: ");
+                    String day = sc.next();
+
+                    System.out.println("Enter the urgency level (1-5): ");
+                    int urgency = sc.nextInt();
+
+                    unifiedDS.addRequest(catIndex, locIndex, statIndex, year, month, day, urgency);
                     break;
                 case 2:
-                    //searchByRequestID(String requestID)
-                    unifiedDS.findRequest();
+                    System.out.println("Enter the request ID to search for: ");
+                    String requestID = sc.next();
+                    unifiedDS.searchByRequestID(requestID);//this gives an error cause static
                     break;
                 case 3:
                     unifiedDS.listRequestsByPriority();

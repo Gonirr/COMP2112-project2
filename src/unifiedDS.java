@@ -138,10 +138,11 @@ public class unifiedDS {
     }
 
     private void leftDown(BSTNode focus){
+        //if(focus==null) return;
         if(focus.getLeft()==null&&focus.getRight()==null) return;
         Request rq=(Request)focus.getData();
-        if(rq.getStatus().equals(catagories[0])){
-            System.out.println(rq);
+        if(rq.getStatus().equals(stats[0])){
+            System.out.println(rq.getUrgency()+" "+rq);
         }
         leftDown(focus.getLeft());
         leftDown(focus.getRight());
@@ -150,35 +151,31 @@ public class unifiedDS {
     private void rightUp(BSTNode focus){
         if(focus==null) return;
         Request rq=(Request)focus.getData();
-        if(rq.getStatus().equals(catagories[0])){
-            System.out.println(rq);
+        if(rq.getStatus().equals(stats[0])){
+            System.out.println(rq.getUrgency()+" "+rq);
         }
         BSTNode parent=bst.searchParent(bst.getRoot(), focus, null);
-        leftDown(parent.getLeft());
-        rightUp(parent);
-    }
-
-    private void findMostRelavent(BSTNode focus){
-        Request rq=(Request) focus.getData();
-        if(rq.getStatus().equals(catagories[0])){
-            System.out.println(rq);
-            return;
+        if(parent==null){
+            leftDown(bst.getRoot().getLeft());
         }
-        findMostRelavent(bst.searchParent(bst.getRoot(), focus, null));
+        else{
+            leftDown(parent.getLeft());
+        }
+        rightUp(parent);
     }
 
     public void findMostRelavent(){
         BSTNode n=bst.findMostRight(bst.getRoot());
         Request rq=(Request)n.getData();
-        findMostRelavent(n);
+        System.out.println(rq);
     }
 
     private void listByLoc(BSTNode focus,int ix){
-        if(focus.getLeft()==null&&focus.getRight()==null) return;
         Request rq=(Request)focus.getData();
         if(locations[ix].equals(rq.getLoc())){
             System.out.println(rq);
         }
+        if(focus.getLeft()==null&&focus.getRight()==null) return;
         listByLoc(focus.getLeft(), ix);
         listByLoc(focus.getRight(), ix);
     }

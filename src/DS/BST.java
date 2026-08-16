@@ -141,6 +141,7 @@ public class BST <T>{
     }
     
     public int height(BSTNode focus){
+        if(focus==null) return 0;
         if(focus.left==null&&focus.right==null){
             return 0;
         }
@@ -148,6 +149,7 @@ public class BST <T>{
     }
 
     public BSTNode findMostRight(BSTNode focus){
+        if(focus==null) return null;
         BSTNode nextRight=null;//next available right place of the left subtree
             BSTNode tmp=focus;
             while(tmp!=null){

@@ -49,7 +49,7 @@ public class Hash{
     }
 
     public double loadFactor(){
-        return N/array.length;
+        return (double)N/array.length;
     }
     
 }

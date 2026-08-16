@@ -11,6 +11,7 @@ public class LinkedList {
         if(first==null){
             first=n;
             last=n;
+            chainLength++;
             return;
         }
         n.next=first;
@@ -24,6 +25,7 @@ public class LinkedList {
         if(first==null){
             first=n;
             last=n;
+            chainLength++;
             return;
         }
         last.next=n;

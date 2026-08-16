@@ -3,15 +3,15 @@ public class Test {
     public static void main(String[] args) throws Exception {
         unifiedDS ds=new unifiedDS();
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
-        ds.insertRequest(2, 0, 0, "6767", "09", "17", 5);
-        ds.insertRequest(2, 0, 0, "6767", "09", "18", 5);
+        
+        
         ds.insertRequest(2, 1, 0, "6767", "09", "17", 2);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 4);
 
         ds.insertRequest(2, 0, 0, "5000", "09", "17", 3);
         ds.insertRequest(2, 0, 0, "5000", "09", "17", 4);
-        ds.insertRequest(2, 0, 0, "5000", "09", "17", 1);
+        ds.insertRequest(2, 0, 0, "5000", "09", "17", 5);
         ds.insertRequest(2, 0, 0, "5000", "09", "17", 2);
         ds.insertRequest(2, 0, 0, "5100", "09", "17", 1);
 
@@ -19,7 +19,8 @@ public class Test {
         ds.insertRequest(2, 0, 0, "2002", "09", "17", 2);
         ds.insertRequest(2, 0, 0, "2002", "08", "17", 1);
         ds.insertRequest(2, 0, 0, "2002", "09", "19", 2);
-        ds.insertRequest(2, 0, 0, "2003", "09", "19", 2);
+        ds.insertRequest(2, 0, 0, "2003", "09", "19", 5);
+        ds.insertRequest(2, 0, 0, "6767", "09", "18", 5);
         Request rq=ds.searchByRequestID("FAC-0000");
         //System.out.println(ds.bst);
         ds.printOpenCases();

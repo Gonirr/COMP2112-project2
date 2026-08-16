@@ -5,7 +5,7 @@ public class Queue <T>{
     int size;
     T top;
 
-    Queue(){
+    public Queue(){
         list=new GenericLinkedList();
         size=0;
         top=null;

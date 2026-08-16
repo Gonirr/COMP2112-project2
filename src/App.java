@@ -9,12 +9,13 @@ public class App {
 
         boolean waow = true;
         while (waow){
+            //date must be entered as 04 not 4
             int choice = sc.nextInt();
             giveRandomExample();
             System.out.println("Welcome to the Request Management System.");
             System.out.println("1. Add a new service request");//+
             System.out.println("2. Find a service request by ID");//+
-            System.out.println("3. List all requests by priority order");//-
+            System.out.println("3. List all requests by priority order");//- doesnt work perfectly but yeah
             System.out.println("4. See the most urgent active request");//+
             System.out.println("5. Update request status");//+
             System.out.println("6. Update request urgency");//+

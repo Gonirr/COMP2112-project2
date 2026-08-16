@@ -103,7 +103,12 @@ public class unifiedDS {
     }
 
     public boolean dateCheck(String year,String month,String day){
-        //implement
+        if(year.length()>4) return false;
+        if(month.length()<2) return false;
+        int m=Integer.parseInt(month);
+        if(m<1||12<m) return false;
+        int d=Integer.parseInt(day);
+        if(d<1||31<d) return false;
         return true;
     }
 
@@ -142,6 +147,7 @@ public class unifiedDS {
         if(focus.getLeft()==null&&focus.getRight()==null) return;
         Request rq=(Request)focus.getData();
         if(rq.getStatus().equals(stats[0])){
+            if(rq.getUrgency()!=5) return;
             System.out.println(rq.getUrgency()+" "+rq);
         }
         leftDown(focus.getLeft());
@@ -152,6 +158,7 @@ public class unifiedDS {
         if(focus==null) return;
         Request rq=(Request)focus.getData();
         if(rq.getStatus().equals(stats[0])){
+            if(rq.getUrgency()!=5) return;
             System.out.println(rq.getUrgency()+" "+rq);
         }
         BSTNode parent=bst.searchParent(bst.getRoot(), focus, null);

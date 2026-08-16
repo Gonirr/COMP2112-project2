@@ -86,5 +86,9 @@ public class Request {
         createdDate=Integer.parseInt(date);
         keys[1]=createdDate;
     }
+
+    public String getLoc(){
+        return location;
+    }
     
 }

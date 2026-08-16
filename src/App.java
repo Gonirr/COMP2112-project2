@@ -87,7 +87,7 @@ public class App {
                     //updateStatus(int ix,String requestID) + using stats array
                     break;
                 case 6:
-                    //updateUrgency(String requestID,int newUrgency)
+                    //updateUrgency(String requestID,int newUrgency) ask requestID from user
                     ds.updateRequestUrgency();
                     break;
                 case 7:
@@ -96,6 +96,7 @@ public class App {
                     ds.deleteRequest(requestIDtoDelete);
                     break;
                 case 8:
+                    //listByLoc(BSTNode focus,int ix) ix is for the location array
                     ds.showRequestsByLocation();
                     break;
                 case 9:

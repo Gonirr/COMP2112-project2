@@ -134,17 +134,28 @@ public class unifiedDS {
     }
 
     public void printOpenCases(){
-        printOpenCases(bst.getRoot());
+        rightUp(bst.findMostRight(bst.getRoot()));
     }
 
-    private void printOpenCases(BSTNode focus){
+    private void leftDown(BSTNode focus){
         if(focus.getLeft()==null&&focus.getRight()==null) return;
         Request rq=(Request)focus.getData();
         if(rq.getStatus().equals(catagories[0])){
             System.out.println(rq);
         }
-        printOpenCases(focus.getLeft());
-        printOpenCases(focus.getRight());
+        leftDown(focus.getLeft());
+        leftDown(focus.getRight());
+    }
+
+    private void rightUp(BSTNode focus){
+        if(focus==null) return;
+        Request rq=(Request)focus.getData();
+        if(rq.getStatus().equals(catagories[0])){
+            System.out.println(rq);
+        }
+        BSTNode parent=bst.searchParent(bst.getRoot(), focus, null);
+        leftDown(parent.getLeft());
+        rightUp(parent);
     }
 
     private void findMostRelavent(BSTNode focus){
@@ -160,5 +171,19 @@ public class unifiedDS {
         BSTNode n=bst.findMostRight(bst.getRoot());
         Request rq=(Request)n.getData();
         findMostRelavent(n);
+    }
+
+    private void listByLoc(BSTNode focus,int ix){
+        if(focus.getLeft()==null&&focus.getRight()==null) return;
+        Request rq=(Request)focus.getData();
+        if(locations[ix].equals(rq.getLoc())){
+            System.out.println(rq);
+        }
+        listByLoc(focus.getLeft(), ix);
+        listByLoc(focus.getRight(), ix);
+    }
+    
+    public void listByLoc(int ix){
+        listByLoc(bst.getRoot(), ix);
     }
 }

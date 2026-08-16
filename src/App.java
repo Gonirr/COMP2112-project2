@@ -2,13 +2,12 @@ import java.util.Scanner;
 //I tried importing request like twice it wouldnt let me can you do it if its needed??
 //okkk ıll look into it
 public class App {
-
-    private unifiedDS ds = new unifiedDS();
-    private static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
-        boolean waow = true;
+        unifiedDS ds = new unifiedDS();
+        Scanner sc = new Scanner(System.in);
+        //static errors are resolved once you create the object inside the main class
 
+        boolean waow = true;
         while (waow){
             int choice = sc.nextInt();
             System.out.println("Welcome to the Request Management System.");
@@ -31,20 +30,20 @@ public class App {
 
                     System.out.println("Enter the category index from the provided list: ");
                     
-                    for(int i = 0; i < unifiedDS.catagories.length; i++){
-                        System.out.println(i+". "+unifiedDS.catagories[i]);
+                    for(int i = 0; i < ds.catagories.length; i++){
+                        System.out.println(i+". "+ds.catagories[i]);
                     }
                     int catIndex = sc.nextInt();
 
                     System.out.println("Enter the location index from the provided list: ");
-                    for(int i = 0; i < unifiedDS.locations.length; i++){
-                        System.out.println(i+". "+unifiedDS.locations[i]);
+                    for(int i = 0; i < ds.locations.length; i++){
+                        System.out.println(i+". "+ds.locations[i]);
                     }
                     int locIndex = sc.nextInt();
 
                     System.out.println("Enter the status index from the provided list: ");
-                    for(int i = 0; i < unifiedDS.statuses.length; i++){
-                        System.out.println(i+". "+unifiedDS.statuses[i]);
+                    for(int i = 0; i < ds.stats.length; i++){
+                        System.out.println(i+". "+ds.stats[i]);
                     }
                     int statIndex = sc.nextInt();
 
@@ -58,33 +57,35 @@ public class App {
                     System.out.println("Enter the urgency level (1-5): ");
                     int urgency = sc.nextInt();
 
-                    unifiedDS.insertRequest(catIndex, locIndex, statIndex, year, month, day, urgency);
+                    ds.insertRequest(catIndex, locIndex, statIndex, year, month, day, urgency);
                     break;
                 case 2:
                     System.out.println("Enter the request ID to search for: ");
                     String requestID = sc.next();
-                    unifiedDS.searchByRequestID(requestID);//this gives an error cause static
+                    ds.searchByRequestID(requestID);//this gives an error cause static
                     break;
                 case 3:
-                    unifiedDS.listRequestsByPriority();
+                    ds.listRequestsByPriority();
                     break;
                 case 4:
-                    unifiedDS.showMostUrgentRequest();
+                    ds.showMostUrgentRequest();
                     break;
                 case 5:
-                    unifiedDS.updateRequestStatus();
+                    //updateStatus(int ix,String requestID) + using stats array
+                    ds.updateRequestStatus();
                     break;
                 case 6:
-                    unifiedDS.updateRequestUrgency();
+                    ds.updateRequestUrgency();
                     break;
                 case 7:
-                    unifiedDS.deleteRequest();
+                    //deleteRequest(String requestID)
+                    ds.deleteRequest();
                     break;
                 case 8:
-                    unifiedDS.showRequestsByLocation();
+                    ds.showRequestsByLocation();
                     break;
                 case 9:
-                    unifiedDS.showStatistics();
+                    ds.showStatistics();
                     break;
                 case 0:
                     waow = false;

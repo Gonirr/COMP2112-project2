@@ -1,7 +1,7 @@
 import DS.*;
 
 public class unifiedDS {
-    String[] catagories={"IT","FAC","LIB","LAB","CLA","NET"};
+    public String[] catagories={"IT","FAC","LIB","LAB","CLA","NET"};
     private static int[] catIDcnt;//used to generate unıque ıd for every catagory;
     String[] locations={"Building","Room","Lab","Office"};
     String[] stats={"OPEN","IN_PROGRESS","RESOLVED","CANCELLED"};
@@ -63,6 +63,10 @@ public class unifiedDS {
         return false;
     }
 
+    public void deleteRequest(String requestID){
+        delete(searchByRequestID(requestID));
+    }
+
     public Request searchByRequestID(String requestID){
         int place=0;
         int catID=0;
@@ -100,11 +104,19 @@ public class unifiedDS {
     
     public void updateUrgency(String requestID,int newUrgency){
         Request rq=this.searchByRequestID(requestID);
-        if(!this.checkUrgency(newUrgency)||rq==null||rq.urgency==newUrgency) return;
+        if(!this.checkUrgency(newUrgency)||rq==null||rq.getUrgency()==newUrgency) return;
         boolean t=this.delete(rq);
         if(!t) return;
-        rq.urgency=newUrgency;
+        rq.setUrgency(newUrgency);
+        insert(rq);
+    }
 
+    public void updateDate(String requestID,String year,String month,String day){
+        Request rq=this.searchByRequestID(requestID);
+        if(!dateCheck(year, month, day)||rq==null) return;
+        delete(rq);
+        rq.setDate(year, month, day);
+        insert(rq);
     }
 
     public boolean dateCheck(String year,String month,String day){
@@ -118,5 +130,11 @@ public class unifiedDS {
         }
         System.out.println("Invalid urgency.");
         return false;
+    }
+
+    public void updateStatus(int ix,String requestID){
+        Request rq=this.searchByRequestID(requestID);
+        if(rq==null||rq.getStatus().equals(this.catagories[ix])) return;
+
     }
 }

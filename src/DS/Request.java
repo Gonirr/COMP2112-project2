@@ -64,4 +64,27 @@ public class Request {
         return catId;
     }
     
+    public int getUrgency(){
+        return urgency;
+    }
+
+    public void setUrgency(int newUrgency){
+        urgency=newUrgency;
+        keys[0]=urgency;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status=status;
+    }
+
+    public void setDate(String year,String month,String day){
+        String date=year+month+day;
+        createdDate=Integer.parseInt(date);
+        keys[1]=createdDate;
+    }
+    
 }

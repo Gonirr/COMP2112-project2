@@ -87,8 +87,17 @@ public class App {
                     //updateStatus(int ix,String requestID) + using stats array
                     break;
                 case 6:
+<<<<<<< HEAD
                     //updateUrgency(String requestID,int newUrgency) ask requestID from user
                     ds.updateRequestUrgency();
+=======
+                    System.out.println("Enter the request ID to update urgency: ");
+                    String requestIDToUpdateUrgency = sc.next();
+                    System.out.println("Enter the new urgency level (1-5): ");
+                    int newUrgency = sc.nextInt();
+                    ds.updateUrgency(requestIDToUpdateUrgency, newUrgency);
+                    //updateUrgency(String requestID,int newUrgency)
+>>>>>>> 1079fce57ed4bd6c4414262783a590bb33b272ff
                     break;
                 case 7:
                     System.out.println("Enter the request ID to delete: ");

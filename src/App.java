@@ -25,9 +25,13 @@ public class App {
 
             switch (choice) {//these are placeholder methods so I don't forget the names I'll brb
                 case 1:
+                    //in unified ds there is a method called insertRequest(int cat,int loc,int stat,String year,String month,String day,int urgency) use that
+                    //+ you will see there are string arrays in unifiedDS ask the user to select catogory, status, loc  etc. using those
+                    //print those arrays and ask for the needed index
                     unifiedDS.addRequest();
                     break;
                 case 2:
+                    //searchByRequestID(String requestID)
                     unifiedDS.findRequest();
                     break;
                 case 3:

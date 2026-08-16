@@ -73,7 +73,7 @@ public class App {
                     ds.listRequestsByPriority();
                     break;
                 case 4:
-                    ds.showMostUrgentRequest();
+                    ds.findMostRelavent();
                     break;
                 case 5:
                     System.out.println("Enter the request ID to update: ");
@@ -87,6 +87,7 @@ public class App {
                     //updateStatus(int ix,String requestID) + using stats array
                     break;
                 case 6:
+                    //updateUrgency(String requestID,int newUrgency)
                     ds.updateRequestUrgency();
                     break;
                 case 7:
@@ -98,7 +99,7 @@ public class App {
                     ds.showRequestsByLocation();
                     break;
                 case 9:
-                    ds.showStatistics();
+                    System.out.println(ds.DSstats());;
                     break;
                 case 0:
                     waow = false;

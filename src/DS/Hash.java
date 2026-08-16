@@ -2,7 +2,7 @@ package DS;
 //Seperate chain hash
 public class Hash{
     LinkedList[] array;
-    
+    int N=0;
     public Hash(int capacity){
         array=new LinkedList[capacity];
         for(int i=0;i<array.length;i++){
@@ -12,6 +12,7 @@ public class Hash{
 
     public void insert(int i,Request data){
         array[i].insertFirst(data);
+        N++;
     }
 
     public String toString(){
@@ -34,7 +35,21 @@ public class Hash{
     }
 
     public boolean delete(int i,Request data){
-        return array[i].removeNode(data);
+        boolean del=array[i].removeNode(data);
+        if(del) N++;
+        return del;
+    }
+
+    public int maxChain(){
+        int max=-1;
+        for(int i=0;i<array.length;i++){
+            if(array[i].chainLength>max) max=array[i].chainLength;
+        }
+        return max;
+    }
+
+    public int loadFactor(){
+
     }
     
 }

@@ -24,31 +24,31 @@ public class App {
 
             switch (choice) {//these are placeholder methods so I don't forget the names I'll brb
                 case 1:
-                    ds.addRequest();
+                    unifiedDS.addRequest();
                     break;
                 case 2:
-                    ds.findRequest();
+                    unifiedDS.findRequest();
                     break;
                 case 3:
-                    ds.listRequestsByPriority();
+                    unifiedDS.listRequestsByPriority();
                     break;
                 case 4:
-                    ds.showMostUrgentRequest();
+                    unifiedDS.showMostUrgentRequest();
                     break;
                 case 5:
-                    ds.updateRequestStatus();
+                    unifiedDS.updateRequestStatus();
                     break;
                 case 6:
-                    ds.updateRequestUrgency();
+                    unifiedDS.updateRequestUrgency();
                     break;
                 case 7:
-                    ds.deleteRequest();
+                    unifiedDS.deleteRequest();
                     break;
                 case 8:
-                    ds.showRequestsByLocation();
+                    unifiedDS.showRequestsByLocation();
                     break;
                 case 9:
-                    ds.showStatistics();
+                    unifiedDS.showStatistics();
                     break;
                 case 0:
                     waow = false;

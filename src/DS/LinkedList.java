@@ -58,15 +58,20 @@ public class LinkedList <T>{
     }
 
     public boolean removeNode(T data){
-        LLNode <T> prev=null;
-        LLNode <T> tmp=first;
+        LLNode <T> prev=first;
+        LLNode <T> tmp=first.next;
+
+        if(first == null){
+            return false;
+        }
+
         while(tmp!=null){
-            prev=tmp;
-            tmp=tmp.next;
             if(tmp.data==data){
-                prev.next=null;
+                prev.next=tmp.next;
                 return true;
             }
+            prev = tmp;
+            tmp = tmp.next;
         }
         return false;
     }

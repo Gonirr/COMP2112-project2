@@ -138,7 +138,7 @@ public class unifiedDS {
     }
 
     private void leftDown(BSTNode focus){
-        //if(focus==null) return;
+        if(focus==null) return;
         if(focus.getLeft()==null&&focus.getRight()==null) return;
         Request rq=(Request)focus.getData();
         if(rq.getStatus().equals(stats[0])){

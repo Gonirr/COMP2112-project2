@@ -22,13 +22,13 @@ public class Test {
         ds.insertRequest(2, 0, 0, "2003", "09", "19", 2);
         Request rq=ds.searchByRequestID("FAC-0000");
         //System.out.println(ds.bst);
-        //ds.printOpenCases();
+        ds.printOpenCases();
         //ds.findMostRelavent();
         //ds.updateUrgency("FAC-0000", 4);
         //ds.updateStatus(1, "FAC-0000");
         //ds.listByLoc(0);
-        System.out.println(ds.DSstats());
-        System.out.println(ds.LinearHash[2]);
+        //System.out.println(ds.DSstats());
+        //System.out.println(ds.LinearHash[2]);
 
         /* BST <String> bst=new BST<>();
         BSTNode <String> a =new BSTNode<>("a",1,0,0);

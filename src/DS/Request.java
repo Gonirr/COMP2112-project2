@@ -1,7 +1,8 @@
+package DS;
 public class Request {
     int urgency;
     private String catagory;
-    int catId;
+    private int catId;
     String location;
     int createdDate;
     String status;
@@ -9,7 +10,7 @@ public class Request {
     private String ID;
     int[] keys;
 
-    Request(String catagory,String location,String status,int createdDate,int urgency,int catID,int cnt){
+    public Request(String catagory,String location,String status,int createdDate,int urgency,int catID,int cnt){
         this.catagory=catagory;
         generateID(cnt);
         this.urgency=urgency;
@@ -21,6 +22,7 @@ public class Request {
         keys[0]=urgency;
         keys[1]=createdDate;
         keys[2]=getRequestIDasInteger();
+        requestID=catagory+"-"+ID;
     }
 
     private void generateID(int cnt){
@@ -54,5 +56,8 @@ public class Request {
         return keys;
     }
 
+    public int getIDasInt(){
+        return Integer.parseInt(ID);
+    }
     
 }

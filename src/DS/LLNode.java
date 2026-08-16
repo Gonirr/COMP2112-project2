@@ -1,11 +1,10 @@
 package DS;
+public class LLNode{
+    Request data;
+    LLNode next;
+    LLNode prev;
 
-public class LLNode <T>{
-    T data;
-    LLNode <T> next;
-    LLNode <T> prev;
-
-    public LLNode(T data){
+    public LLNode(Request data){
         this.data=data;
         next=null;
     }

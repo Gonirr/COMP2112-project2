@@ -1,14 +1,13 @@
-import DS.*;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-        /* unifiedDS ds=new unifiedDS();
+        unifiedDS ds=new unifiedDS();
         ds.insertRequest(0, 0, 0, "6767", "09", "17", 5);
         ds.insertRequest(0, 0, 0, "6767", "09", "17", 4);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
         ds.insertRequest(3, 0, 0, "6767", "09", "17", 2);
         ds.insertRequest(2, 0, 0, "6767", "09", "17", 3);
-        ds.bst.printTree(ds.bst.getRoot()); */
+        ds.searchByRequestID("FAC-1000");
 
         /* BST <String> bst=new BST<>();
         BSTNode <String> a =new BSTNode<>("a",1,0,0);
@@ -26,14 +25,14 @@ public class Test {
         bst.insert(e);
         bst.insert(k);
         System.out.println(bst);
-        bst.delete(d);
+        bst.delete(null);
         System.out.println(bst); */
 
-        Hash <String> h=new Hash<>(3);
+       /*  Hash <String> h=new Hash<>(3);
         h.insert(0, "a");
         h.insert(0, "b");
         h.insert(0, "d");
         h.insert(0, "c");
-        System.out.println(h.delete(0, "d"));
+        System.out.println(h.delete(0, "d")); */
     }
 }

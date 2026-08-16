@@ -13,7 +13,7 @@ public class unifiedDS {
         catIDcnt=new int[catagories.length];
         bst=new BST<>();
         for(int i=0;i<LinearHash.length;i++){
-            LinearHash[i]=new Hash<>(10);
+            LinearHash[i]=new Hash(10);
         }
     }
 
@@ -29,6 +29,41 @@ public class unifiedDS {
         LinearHash[cat].insert(rq.hashCode(), rq);
     }
 
-    public void delete(){}
+    public void delete(Request rq) throws Exception{
+        BSTNode del=bst.search(bst.getRoot(), rq, rq.getKeys());
+        if(bst.delete(del)){
+            throw new Exception("Unable to delete data.");
+        }
+        if(LinearHash[rq.getCatID()].delete(rq.hashCode(), rq)){
+            throw new Exception("Unable to delete data.");
+        }
+    }
+
+    public Request searchByRequestID(String requestID){
+        int place=0;
+        int catID=0;
+        String ID="";
+        String cat="";
+        for(int i=0;'-'!=requestID.charAt(i);i++){
+            cat=cat+requestID.charAt(i);
+            place=i;
+        }
+        place++;
+        for(int i=place;i<requestID.length();i++){
+            if(catagories[i].equals(cat)){
+                catID=i;
+                break;
+            }
+        }
+        if(!catagories[catID].equals(cat)){
+            return null;
+        }
+        for(int i=0;i<requestID.length();i++){
+            ID=ID+requestID.charAt(i);
+        }
+        int x=Integer.parseInt(ID);
+        return LinearHash[catID].search(x);
+    }
+
 
 }

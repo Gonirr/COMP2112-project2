@@ -50,6 +50,7 @@ public class BST <T>{
             if(d.left!=null) q.enqueue(d.left);
             if(d.right!=null) q.enqueue(d.right);
         }
+        s=s.substring(0, s.length()-3);
         return s;
     }
 
@@ -68,6 +69,7 @@ public class BST <T>{
     }
 
     private BSTNode searchParent(BSTNode focus, BSTNode child,BSTNode parent){
+        if(focus==null) return null;
         for(int i=0;i<focus.compositeKey.length;i++){
             if(focus==child) return parent;
             if(focus.compositeKey[i]>child.compositeKey[i]){
@@ -80,13 +82,18 @@ public class BST <T>{
         return null;
     }
 
-    public void delete(BSTNode child){
+    public boolean delete(BSTNode child){
+        if(child==null) return false;
         boolean isLeft=true;
         BSTNode parent=searchParent(root, child, null);
         BSTNode rightSub=child.right;
         BSTNode leftSub=child.left;
 
-        if(parent==null){//deleting root
+        if(parent==null&&child!=root){
+            //parent is null bcuz child is not in the bst
+            return false;
+        }
+        else if(parent==null){//deleting root and child==root
             if(child.left!=null){
                 parent=child.left;
                 leftSub=parent.right;
@@ -94,13 +101,14 @@ public class BST <T>{
             else if(child.right!=null){// left=null but right!=null, there is only right subtree
                 root=child.right;
                 child.right=null;
-                return;
+                return true;
             }
             else{//both left and right are null there is only the root node int he tree
                 root=null;
-                return;
+                return true;
             }
         }
+        
 
         if(parent.left==child){
             parent.left=null;
@@ -124,7 +132,7 @@ public class BST <T>{
                 child.left=null;
                 child.right=null;
                 root=parent;
-                return;
+                return true;
             }
         }
 
@@ -134,7 +142,7 @@ public class BST <T>{
         else{
             parent.right=leftSub;
         }
-
+        return true;
     }
     
 }

@@ -1,10 +1,10 @@
 package DS;
 
-public class LinkedList <T>{
-    LLNode <T> first;
-    LLNode <T> last;
+public class LinkedList {
+    LLNode first;
+    LLNode last;
 
-    public void insertFirst(T data){
+    public void insertFirst(Request data){
         if(data==null) return;
         LLNode n=new LLNode(data);
         if(first==null){
@@ -16,7 +16,7 @@ public class LinkedList <T>{
         first=n;
     }
 
-    public void insertLast(T data){
+    public void insertLast(Request data){
         if(data==null) return;
         LLNode n=new LLNode(data);
         if(first==null){
@@ -28,10 +28,10 @@ public class LinkedList <T>{
         last=n;
     }
 
-    public T removeFirst(){
+    public Request removeFirst(){
         LLNode tmp=first;
         first=first.next;
-        return (T)tmp.data;
+        return tmp.data;
     }
     @Override
     public String toString(){
@@ -44,19 +44,16 @@ public class LinkedList <T>{
         return s;
     }
 
-    public LLNode <T> search(T data){
-        LLNode <T> found=null;
-        LLNode <T> tmp=first;
+    public Request search(int ID){
+        LLNode tmp=first;
         while(tmp!=null){
-            if(tmp.data==data){
-                found=tmp;
-                return found;
-            }
+            if(ID==tmp.data.getIDasInt()) return tmp.data;
             tmp=tmp.next;
         }
-        return found;
+        return null;
     }
 
+<<<<<<< HEAD
     public boolean removeNode(T data){
         LLNode <T> prev=first;
         LLNode <T> tmp=first.next;
@@ -65,6 +62,11 @@ public class LinkedList <T>{
             return false;
         }
 
+=======
+    public boolean removeNode(Request data){
+        LLNode prev=null;
+        LLNode tmp=first;
+>>>>>>> 88d44a0 (made it not generic cuz that caused problems and redid search didnt test)
         while(tmp!=null){
             if(tmp.data==data){
                 prev.next=tmp.next;

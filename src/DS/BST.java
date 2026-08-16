@@ -68,7 +68,7 @@ public class BST <T>{
         return null;
     }
 
-    private BSTNode searchParent(BSTNode focus, BSTNode child,BSTNode parent){
+    public BSTNode searchParent(BSTNode focus, BSTNode child,BSTNode parent){
         if(focus==null) return null;
         for(int i=0;i<focus.compositeKey.length;i++){
             if(focus==child) return parent;
@@ -121,12 +121,7 @@ public class BST <T>{
         //stays isLeft=true
 
         if(leftSub!=null){
-            BSTNode nextRight=null;//next available right place of the left subtree
-            BSTNode tmp=leftSub;
-            while(tmp!=null){
-                nextRight=tmp;
-                tmp=tmp.right;
-            }
+            BSTNode nextRight=findMostRight(leftSub);
             nextRight.right=rightSub;
             if(child==root){
                 child.left=null;
@@ -150,5 +145,15 @@ public class BST <T>{
             return 0;
         }
         return Math.max(height(focus.left), height(focus.right))+1;
+    }
+
+    public BSTNode findMostRight(BSTNode focus){
+        BSTNode nextRight=null;//next available right place of the left subtree
+            BSTNode tmp=focus;
+            while(tmp!=null){
+                nextRight=tmp;
+                tmp=tmp.right;
+            }
+           return nextRight;
     }
 }

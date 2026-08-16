@@ -127,9 +127,38 @@ public class unifiedDS {
         s=s+"Length of The Array Contianing Catogory Hashs="+LinearHash.length+"\n";
         for(int i=0;i<LinearHash.length;i++){
             if(LinearHash[i].maxChain()>max) max=LinearHash[i].maxChain();
-            s=s+catagories[i]+" load factor="+LinearHash[i].loadFactor()+"\n";
+            s=s+"Load Factor of "+catagories[i]+"="+LinearHash[i].loadFactor()+"\n";
         }
         s=s+"Max Length of A Catogory Hashs Chain="+max;
         return s;
+    }
+
+    public void printOpenCases(){
+        printOpenCases(bst.getRoot());
+    }
+
+    private void printOpenCases(BSTNode focus){
+        if(focus.getLeft()==null&&focus.getRight()==null) return;
+        Request rq=(Request)focus.getData();
+        if(rq.getStatus().equals(catagories[0])){
+            System.out.println(rq);
+        }
+        printOpenCases(focus.getLeft());
+        printOpenCases(focus.getRight());
+    }
+
+    private void findMostRelavent(BSTNode focus){
+        Request rq=(Request) focus.getData();
+        if(rq.getStatus().equals(catagories[0])){
+            System.out.println(rq);
+            return;
+        }
+        findMostRelavent(bst.searchParent(bst.getRoot(), focus, null));
+    }
+
+    public void findMostRelavent(){
+        BSTNode n=bst.findMostRight(bst.getRoot());
+        Request rq=(Request)n.getData();
+        findMostRelavent(n);
     }
 }

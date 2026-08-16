@@ -29,7 +29,7 @@ public class Test {
         bst.insert(k);
         System.out.println(bst);
         int h=bst.height(bst.getRoot());
-        System.out.println(h);
+        System.out.println(bst.findMostRight(bst.getRoot()));
 
        /*  Hash <String> h=new Hash<>(3);
         h.insert(0, "a");

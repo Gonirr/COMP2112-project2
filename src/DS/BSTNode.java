@@ -42,4 +42,12 @@ public class BSTNode <T> {
         s=s+"]";
         return s;
     }
+
+    public BSTNode getLeft(){
+        return left;
+    }
+
+    public BSTNode getRight(){
+        return right;
+    }
 }

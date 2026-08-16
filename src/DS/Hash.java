@@ -48,8 +48,8 @@ public class Hash{
         return max;
     }
 
-    public int loadFactor(){
-
+    public double loadFactor(){
+        return N/array.length;
     }
     
 }

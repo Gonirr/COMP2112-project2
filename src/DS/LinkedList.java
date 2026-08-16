@@ -3,6 +3,7 @@ package DS;
 public class LinkedList {
     LLNode first;
     LLNode last;
+    int chainLength=0;
 
     public void insertFirst(Request data){
         if(data==null) return;
@@ -14,6 +15,7 @@ public class LinkedList {
         }
         n.next=first;
         first=n;
+        chainLength++;
     }
 
     public void insertLast(Request data){
@@ -26,13 +28,16 @@ public class LinkedList {
         }
         last.next=n;
         last=n;
+        chainLength++;
     }
 
     public Request removeFirst(){
         LLNode tmp=first;
         first=first.next;
+        chainLength--;
         return tmp.data;
     }
+
     @Override
     public String toString(){
         LLNode tmp=first;
@@ -64,6 +69,7 @@ public class LinkedList {
         while(tmp!=null){
             if(tmp.data==data){
                 prev.next=tmp.next;
+                chainLength--;
                 return true;
             }
             prev = tmp;

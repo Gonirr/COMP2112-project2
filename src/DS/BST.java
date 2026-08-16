@@ -145,4 +145,10 @@ public class BST <T>{
         return true;
     }
     
+    public int height(BSTNode focus){
+        if(focus.left==null&&focus.right==null){
+            return 0;
+        }
+        return Math.max(height(focus.left), height(focus.right))+1;
+    }
 }

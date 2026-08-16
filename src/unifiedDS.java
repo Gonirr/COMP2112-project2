@@ -7,6 +7,7 @@ public class unifiedDS {
     String[] stats={"OPEN","IN_PROGRESS","RESOLVED","CANCELLED"};
     Hash[] LinearHash;
     BST bst;
+    int requestNum=0;
 
     unifiedDS(){
         LinearHash=new Hash[catagories.length];
@@ -38,29 +39,12 @@ public class unifiedDS {
         LinearHash[rq.getCatID()].insert(rq.hashCode(), rq);
     }
 
-    public boolean delete(Request rq){
-        boolean hashDel=false;
-        boolean treeDel=false;
+    public void delete(Request rq){
+        if(rq==null) return;
         BSTNode del=bst.search(bst.getRoot(), rq, rq.getKeys());
-        if(bst.delete(del)){//delete operation
-            treeDel=true;
-        }
-        if(LinearHash[rq.getCatID()].delete(rq.hashCode(), rq)){//delete operation
-            hashDel=true;
-        }
-
-        if(treeDel&&hashDel){
-            return true;//delete succesfull
-        }
-        if(treeDel){
-           //add back deleted rq bcuz it was deleted from hash
-           bst.insert(del); 
-        }
-        else if(hashDel){
-            //same as above but for hash
-            LinearHash[rq.getCatID()].insert(rq.hashCode(), rq);
-        }
-        return false;
+        if(del==null) return;
+        bst.delete(del);
+        LinearHash[rq.getCatID()].delete(rq.hashCode(), rq);
     }
 
     public void deleteRequest(String requestID){
@@ -105,8 +89,7 @@ public class unifiedDS {
     public void updateUrgency(String requestID,int newUrgency){
         Request rq=this.searchByRequestID(requestID);
         if(!this.checkUrgency(newUrgency)||rq==null||rq.getUrgency()==newUrgency) return;
-        boolean t=this.delete(rq);
-        if(!t) return;
+        delete(rq);
         rq.setUrgency(newUrgency);
         insert(rq);
     }
@@ -135,6 +118,18 @@ public class unifiedDS {
     public void updateStatus(int ix,String requestID){
         Request rq=this.searchByRequestID(requestID);
         if(rq==null||rq.getStatus().equals(this.catagories[ix])) return;
+        rq.setStatus(this.stats[ix]);
+    }
 
+    public String DSstats(){
+        int max=0;
+        String s="Tree Height="+bst.height(bst.getRoot())+"\n";
+        s=s+"Length of The Array Contianing Catogory Hashs="+LinearHash.length+"\n";
+        for(int i=0;i<LinearHash.length;i++){
+            if(LinearHash[i].maxChain()>max) max=LinearHash[i].maxChain();
+            s=s+catagories[i]+" load factor="+LinearHash[i].loadFactor()+"\n";
+        }
+        s=s+"Max Length of A Catogory Hashs Chain="+max;
+        return s;
     }
 }

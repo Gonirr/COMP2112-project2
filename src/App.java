@@ -58,7 +58,7 @@ public class App {
                     System.out.println("Enter the urgency level (1-5): ");
                     int urgency = sc.nextInt();
 
-                    unifiedDS.addRequest(catIndex, locIndex, statIndex, year, month, day, urgency);
+                    unifiedDS.insertRequest(catIndex, locIndex, statIndex, year, month, day, urgency);
                     break;
                 case 2:
                     System.out.println("Enter the request ID to search for: ");
